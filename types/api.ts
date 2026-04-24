@@ -8,5 +8,5 @@ export type ApiError = {
     exc_type?: string;
     exc?: string;
     _server_messages?: string;
-    session_expired?: number;
+    // session_expired?: number;
 }

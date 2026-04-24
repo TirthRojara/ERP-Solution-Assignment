@@ -1,18 +1,11 @@
 import { z } from "zod";
 
 export const loginSchema = z.object({
-    // email: z.email().trim().min(1, "Email is required"),
-    // email: z
-    //     .string()
-    //     .trim()
-    //     .min(1, "Email is required")
-    //     .email("Invalid email address"),
-    email: z
+    usr: z
         .string()
         .trim()
-        .nonempty("Email is required")
-        .email("Invalid email address"),
-    password: z
+        .nonempty("Username is required"),
+    pwd: z
         .string()
         .trim()
         .min(8, "Password must be at least 8 characters long")
@@ -25,6 +18,16 @@ export type LoginFormPayload = z.infer<typeof loginSchema>
 
 
 export const defaultLoginFormValue: LoginFormPayload = {
-    email: "",
-    password: "",
+    usr: "",
+    pwd: "",
+}
+
+export interface LoginResponse {
+    message: string;
+    home_page: string;
+    full_name: string;
+}
+
+export interface LoginApiPayload extends LoginFormPayload {
+    cmd: "login"
 }

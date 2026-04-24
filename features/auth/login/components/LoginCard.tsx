@@ -21,9 +21,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Separator } from "@/components/ui/separator";
 import { CustomCheckbox } from "@/components/custom-checkbox";
 import SocialButton from "./LoginButtons";
-import { useEffect } from "react";
+import { useLogin } from "../api/hooks";
 
 export default function LoginCard() {
+    const { mutate, isPending } = useLogin();
+
     const form = useForm<LoginFormPayload>({
         defaultValues: defaultLoginFormValue,
         resolver: zodResolver(loginSchema),
@@ -33,6 +35,8 @@ export default function LoginCard() {
 
     const onSubmit = (data: LoginFormPayload) => {
         console.log({ data });
+
+        mutate(data);
     };
 
     return (
@@ -51,20 +55,20 @@ export default function LoginCard() {
                     <div className="flex flex-col gap-6">
                         <Controller
                             control={form.control}
-                            name="email"
+                            name="usr"
                             render={({ field, fieldState }) => (
                                 <div className="flex flex-col gap-1.5">
                                     <CustomLabel
-                                        label="Email"
+                                        label="Username"
                                         required
-                                        htmlFor="email"
+                                        htmlFor="usr"
                                     />
                                     <CustomInput
                                         {...field}
-                                        id="email"
-                                        type="email"
+                                        id="usr"
+                                        type="text"
                                         variant="outlined"
-                                        placeholder="Enter Email"
+                                        placeholder="Enter Username"
                                         leftIcon={{ icon: <Mail /> }}
                                         errorMessage={fieldState.error?.message}
                                     />
@@ -73,17 +77,17 @@ export default function LoginCard() {
                         />
                         <Controller
                             control={form.control}
-                            name="password"
+                            name="pwd"
                             render={({ field, fieldState }) => (
                                 <div className="flex flex-col gap-1.5">
                                     <CustomLabel
                                         label="Password"
                                         required
-                                        htmlFor="password"
+                                        htmlFor="pwd"
                                     />
                                     <CustomInput
                                         {...field}
-                                        id="password"
+                                        id="pwd"
                                         type="password"
                                         variant="outlined"
                                         placeholder="Enter Password"

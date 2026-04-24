@@ -3,7 +3,8 @@ import { ApiError } from "@/types/api";
 import axios, { AxiosInstance } from "axios";
 
 const api: AxiosInstance = axios.create({
-    baseURL: '/api/erp/v1',
+    baseURL: '/api/erp-solutions/v1',
+    // baseURL: 'https://fortwall-contracting.sterlingcloud.co',
     withCredentials: true,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -23,5 +24,8 @@ api.interceptors.response.use(
         return Promise.reject(error.response?.data as ApiError);
     }
 );
+
+export const toFormData = (obj: Record<string, any>) =>
+    new URLSearchParams(Object.entries(obj));
 
 export default api;
