@@ -1,0 +1,59 @@
+<svg width="43" height="35" viewBox="0 0 43 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="6" width="36" height="30">
+<path d="M7.83716 6.17413H42.0689V35.0008H7.83716V6.17413Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_1_1179)">
+<mask id="mask1_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="6" width="35" height="30">
+<path d="M23.0647 6.17499H36.3769C38.1718 6.17499 39.8624 7.0371 40.9131 8.49527C41.9638 9.95344 42.25 11.8292 41.6809 13.5366L36.9797 27.6435C35.5114 32.0382 31.3996 35.0017 26.7657 35.0017H13.4536C11.6587 35.0017 9.96813 34.1396 8.91744 32.6814C7.86675 31.2232 7.5805 29.3475 8.14962 27.6435L12.8508 13.5366C14.3157 9.13848 18.4309 6.17499 23.0647 6.17499Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_1_1179)">
+<mask id="mask2_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="6" width="36" height="30">
+<path d="M42.2439 6.03705H7.75964V35.3487H42.2439V6.03705Z" fill="white"/>
+</mask>
+<g mask="url(#mask2_1_1179)">
+<mask id="mask3_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="6" width="36" height="30">
+<path d="M7.83728 6.17621H42.069V35.0029H7.83728V6.17621Z" fill="white"/>
+</mask>
+<g mask="url(#mask3_1_1179)">
+<mask id="mask4_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="7" y="6" width="35" height="30">
+<path d="M23.0649 6.17706H36.377C38.172 6.17706 39.8625 7.03917 40.9132 8.49734C41.9639 9.95552 42.2501 11.8313 41.681 13.5386L36.9798 27.6455C35.5115 32.0403 31.3997 35.0038 26.7659 35.0038H13.4537C11.6588 35.0038 9.96825 34.1417 8.91756 32.6835C7.86687 31.2253 7.58062 29.3496 8.14975 27.6455L12.8509 13.5386C14.3158 9.14056 18.431 6.17706 23.0649 6.17706Z" fill="white"/>
+</mask>
+<g mask="url(#mask4_1_1179)">
+<path d="M5.69482 6.17706H44.0956V35.0038H5.69482V6.17706Z" fill="#059669"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<mask id="mask5_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="31">
+<path d="M39.6571 0H0.00012207V30.1737H39.6571V0Z" fill="white"/>
+</mask>
+<g mask="url(#mask5_1_1179)">
+<mask id="mask6_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2" y="0" width="35" height="30">
+<path d="M2.58679 0.864746H36.7983V29.6948H2.58679V0.864746Z" fill="white"/>
+</mask>
+<g mask="url(#mask6_1_1179)">
+<mask id="mask7_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2" y="0" width="35" height="30">
+<path d="M17.7913 0.864746H31.1035C32.8984 0.864746 34.5889 1.73022 35.6396 3.18839C36.6903 4.64657 36.9766 6.51896 36.4074 8.22633L31.7063 22.3332C30.2414 26.728 26.1261 29.6948 21.4923 29.6948H8.18017C6.38523 29.6948 4.69469 28.8293 3.644 27.3712C2.59331 25.913 2.30706 24.0372 2.87619 22.3332L7.57736 8.22633C9.04564 3.83161 13.1575 0.864746 17.7913 0.864746Z" fill="white"/>
+</mask>
+<g mask="url(#mask7_1_1179)">
+<mask id="mask8_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2" y="0" width="36" height="31">
+<path d="M37.0711 0.859863H2.58679V30.1715H37.0711V0.859863Z" fill="white"/>
+</mask>
+<g mask="url(#mask8_1_1179)">
+<mask id="mask9_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2" y="0" width="35" height="30">
+<path d="M2.58679 0.86377H36.7983V29.6938H2.58679V0.86377Z" fill="white"/>
+</mask>
+<g mask="url(#mask9_1_1179)">
+<mask id="mask10_1_1179" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2" y="0" width="35" height="30">
+<path d="M17.7913 0.86377H31.1035C32.8984 0.86377 34.5889 1.72924 35.6396 3.18742C36.6903 4.64559 36.9766 6.51798 36.4074 8.22536L31.7063 22.3323C30.2414 26.727 26.1261 29.6938 21.4923 29.6938H8.18017C6.38523 29.6938 4.69469 28.8284 3.644 27.3702C2.59331 25.912 2.30706 24.0363 2.87619 22.3323L7.57736 8.22536C9.04564 3.83063 13.1575 0.86377 17.7913 0.86377Z" fill="white"/>
+</mask>
+<g mask="url(#mask10_1_1179)">
+<path d="M0.421265 0.86377H38.8221V29.6938H0.421265V0.86377Z" fill="#6EC1A7"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

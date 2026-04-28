@@ -14,7 +14,7 @@ export const useLogin = (options?: UseMutationOptions<LoginResponse, ApiError, L
         },
         onError: (error: ApiError) => {
             toast.error(error?.message || "Something went wrong. Please try again later.");
-            console.log(error)
+            // console.log(error)
         },
         ...options,
     });

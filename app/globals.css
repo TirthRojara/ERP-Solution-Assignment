@@ -29,9 +29,9 @@
   --chart-5: oklch(0.6959 0.1491 162.4796);
   --sidebar: oklch(0.9911 0 0);
   --sidebar-foreground: oklch(0.2046 0 0);
-  --sidebar-primary: oklch(0.8348 0.1302 160.9080);
-  --sidebar-primary-foreground: oklch(0.2626 0.0147 166.4589);
-  --sidebar-accent: oklch(0.9461 0 0);
+  --sidebar-primary: oklch(59.7% 0.146 164);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.9911 0 0);
   --sidebar-accent-foreground: oklch(0.2435 0 0);
   --sidebar-border: oklch(0.9037 0 0);
   --sidebar-ring: oklch(59.7% 0.146 164);
@@ -55,6 +55,16 @@
   --shadow-2xl: 0px 1px 3px 0px hsl(0 0% 0% / 0.43);
   --tracking-normal: 0.025em;
   --spacing: 0.25rem;
+  --sidebar-icon-strip-width: 60px;
+  --sidebar-submenu-width: 190px;
+  --sidebar-total-width: calc(var(--sidebar-icon-strip-width) + var(--sidebar-submenu-width));
+  --sidebar-brand-height: 56px;
+  --sidebar-active-green: #2DB78A;
+  --sidebar-active-green-light: #e8f8f0;
+  --sidebar-text-muted: #64748b;
+  --sidebar-text-dark: #1e293b;
+  --sidebar-border-color: #e8ecf1;
+  --sidebar-icon-bg: #f7f8fa;
 }
 
 .dark {
@@ -174,6 +184,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
