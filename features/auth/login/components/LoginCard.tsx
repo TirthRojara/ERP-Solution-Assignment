@@ -22,9 +22,11 @@ import { Separator } from "@/components/ui/separator";
 import { CustomCheckbox } from "@/components/form/custom-checkbox";
 import SocialButton from "./LoginButtons";
 import { useLogin } from "../api/hooks";
+import { useRouter } from "next/navigation";
 
 export default function LoginCard() {
     const { mutate, isPending } = useLogin();
+    const router = useRouter()
 
     const form = useForm<LoginFormPayload>({
         defaultValues: defaultLoginFormValue,
@@ -36,7 +38,13 @@ export default function LoginCard() {
     const onSubmit = (data: LoginFormPayload) => {
         console.log({ data });
 
-        mutate(data);
+        mutate(data,
+            {
+                onSuccess: () => {
+                    router.push("/vendor")
+                },
+            }
+        );
     };
 
     return (

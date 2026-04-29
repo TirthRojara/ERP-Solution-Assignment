@@ -8,10 +8,10 @@ export const loginSchema = z.object({
     pwd: z
         .string()
         .trim()
-        .min(8, "Password must be at least 8 characters long")
-        .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-        .regex(/[0-9]/, "Password must contain at least one number")
-        .regex(/[!@#$%^&*]/, "Password must contain at least one special character"),
+        // .min(8, "Password must be at least 8 characters long")
+        // .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+        // .regex(/[0-9]/, "Password must contain at least one number")
+        // .regex(/[!@#$%^&*]/, "Password must contain at least one special character"),
 })
 
 export type LoginFormPayload = z.infer<typeof loginSchema>

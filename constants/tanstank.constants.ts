@@ -1,5 +1,6 @@
 export const MUTATION = {
     AUTH: {
-        signin: "signin"
+        signin: "signin",
+        logout: "logout"
     }
 }

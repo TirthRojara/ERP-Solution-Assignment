@@ -13,3 +13,8 @@ export const login = async (payload: LoginFormPayload): Promise<LoginResponse> =
     const res = await api.post('/login', toFormData(apiPayload));
     return res.data;
 }
+
+export const logout = async (): Promise<void> => {
+    const res = await api.post('/api/method/logout');
+    return res.data;
+}
