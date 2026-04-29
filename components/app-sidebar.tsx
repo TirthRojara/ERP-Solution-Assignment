@@ -15,10 +15,10 @@ const navSections = [
     title: "Workspace",
     icon: "/workspace.svg",
     items: [
-      { title: "Dashboard", url: "/dashboard" },
-      { title: "Quick Actions", url: "/quick-actions" },
-      { title: "Recent Activities", url: "/activities" },
-      { title: "Notifications", url: "/notifications" },
+      { title: "Dashboard", url: "/coming-soon" },
+      { title: "Quick Actions", url: "/coming-soon" },
+      { title: "Recent Activities", url: "/coming-soon" },
+      { title: "Notifications", url: "/coming-soon" },
     ],
   },
   {
@@ -26,14 +26,14 @@ const navSections = [
     title: "Accounting",
     icon: "/accounting.svg",
     items: [
-      { title: "Accounts Dashboard", url: "#" },
-      { title: "Chart of Accounts", url: "#" },
-      { title: "Journal Entry", url: "#" },
-      { title: "Payment Entry", url: "#" },
-      { title: "General Ledger", url: "#" },
-      { title: "Profit & Loss", url: "#" },
-      { title: "Balance Sheet", url: "#" },
-      { title: "Financial Reports", url: "#" },
+      { title: "Accounts Dashboard", url: "/coming-soon" },
+      { title: "Chart of Accounts", url: "/coming-soon" },
+      { title: "Journal Entry", url: "/coming-soon" },
+      { title: "Payment Entry", url: "/coming-soon" },
+      { title: "General Ledger", url: "/coming-soon" },
+      { title: "Profit & Loss", url: "/coming-soon" },
+      { title: "Balance Sheet", url: "/coming-soon" },
+      { title: "Financial Reports", url: "/coming-soon" },
     ],
   },
   {
@@ -41,12 +41,12 @@ const navSections = [
     title: "Inventory",
     icon: "/inventory.svg",
     items: [
-      { title: "Stock Dashboard", url: "#" },
-      { title: "Stock Entry", url: "#" },
-      { title: "Material Request", url: "#" },
-      { title: "Delivery Note", url: "#" },
-      { title: "Stock Reconciliation", url: "#" },
-      { title: "Inventory Reports", url: "#" },
+      { title: "Stock Dashboard", url: "/coming-soon" },
+      { title: "Stock Entry", url: "/coming-soon" },
+      { title: "Material Request", url: "/coming-soon" },
+      { title: "Delivery Note", url: "/coming-soon" },
+      { title: "Stock Reconciliation", url: "/coming-soon" },
+      { title: "Inventory Reports", url: "/coming-soon" },
     ],
   },
   {
@@ -55,14 +55,14 @@ const navSections = [
     icon: "/purchase.svg",
     invertedIcon: true,
     items: [
-      { title: "Purchase Dashboard", url: "#" },
+      { title: "Purchase Dashboard", url: "/coming-soon" },
       { title: "Vendor", url: "/vendor" },
-      { title: "Request for Quotation", url: "#" },
-      { title: "Purchase Order", url: "#" },
-      { title: "Purchase Return", url: "#" },
-      { title: "Free Text Purchase", url: "#" },
-      { title: "Vendor Payment", url: "#" },
-      { title: "Purchase Reports", url: "#" },
+      { title: "Request for Quotation", url: "/coming-soon" },
+      { title: "Purchase Order", url: "/coming-soon" },
+      { title: "Purchase Return", url: "/coming-soon" },
+      { title: "Free Text Purchase", url: "/coming-soon" },
+      { title: "Vendor Payment", url: "/coming-soon" },
+      { title: "Purchase Reports", url: "/coming-soon" },
     ],
   },
   {
@@ -70,11 +70,11 @@ const navSections = [
     title: "Analytics",
     icon: "/analytics.svg",
     items: [
-      { title: "Sales Analytics", url: "/analytics/sales" },
-      { title: "Purchase Analytics", url: "/analytics/purchase" },
-      { title: "Inventory Analytics", url: "/analytics/inventory" },
-      { title: "Financial Analytics", url: "/analytics/finance" },
-      { title: "Vendor Performance", url: "/analytics/vendors" },
+      { title: "Sales Analytics", url: "/coming-soon" },
+      { title: "Purchase Analytics", url: "/coming-soon" },
+      { title: "Inventory Analytics", url: "/coming-soon" },
+      { title: "Financial Analytics", url: "/coming-soon" },
+      { title: "Vendor Performance", url: "/coming-soon" },
     ],
   },
 ]
@@ -103,7 +103,7 @@ export function AppSidebarProvider({ children }: { children: React.ReactNode }) 
   const getActiveSectionFromPath = React.useCallback((path: string) => {
     for (const section of navSections) {
       for (const item of section.items) {
-        if (item.url !== "#" && path.startsWith(item.url)) {
+        if (item.url !== "#" && item.url !== "/coming-soon" && path.startsWith(item.url)) {
           return section.id
         }
       }
@@ -111,13 +111,16 @@ export function AppSidebarProvider({ children }: { children: React.ReactNode }) 
     return navSections[0].id
   }, [])
 
-  const [activeSection, setActiveSection] = React.useState(() =>
-    getActiveSectionFromPath(pathname)
-  )
+  const [activeSection, setActiveSection] = React.useState(() => {
+    if (pathname === "/coming-soon") return "workspace" // default if loaded directly on coming-soon
+    return getActiveSectionFromPath(pathname)
+  })
 
   // Update active section when pathname changes
   React.useEffect(() => {
-    setActiveSection(getActiveSectionFromPath(pathname))
+    if (pathname !== "/coming-soon") {
+      setActiveSection(getActiveSectionFromPath(pathname))
+    }
   }, [pathname, getActiveSectionFromPath])
 
   // Close mobile sidebar on navigation
@@ -192,7 +195,7 @@ function SubmenuPanel() {
       <p className="submenu-section-label">{section.title}</p>
       <nav className="submenu-nav">
         {section.items.map((item) => {
-          const isActive = item.url !== "#" && pathname.startsWith(item.url)
+          const isActive = item.url !== "#" && item.url !== "/coming-soon" && pathname.startsWith(item.url)
           return (
             <Link
               key={item.title}
