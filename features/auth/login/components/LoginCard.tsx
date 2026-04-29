@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CustomInput } from "@/components/custom-input";
-import { CustomLabel } from "@/components/custom-label";
+import { CustomInput } from "@/components/form/custom-input";
+import { CustomLabel } from "@/components/form/custom-label";
 import {
     Card,
     CardContent,
@@ -19,7 +19,7 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Separator } from "@/components/ui/separator";
-import { CustomCheckbox } from "@/components/custom-checkbox";
+import { CustomCheckbox } from "@/components/form/custom-checkbox";
 import SocialButton from "./LoginButtons";
 import { useLogin } from "../api/hooks";
 
@@ -94,7 +94,7 @@ export default function LoginCard() {
                                         leftIcon={{ icon: <LockKeyhole /> }}
                                         rightIcon={{
                                             icon: <Eye />,
-                                            onClick: () => {},
+                                            onClick: () => { },
                                         }}
                                         errorMessage={fieldState.error?.message}
                                     />
