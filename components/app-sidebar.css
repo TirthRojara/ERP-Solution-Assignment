@@ -39,15 +39,32 @@
 .sidebar-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
   height: var(--sidebar-brand-height);
-  padding: 0 14px;
+  padding: 0;
   border-bottom: 1px solid var(--sidebar-border-color);
   flex-shrink: 0;
 }
 
+.sidebar-hamburger-wrapper {
+  width: var(--sidebar-icon-strip-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid var(--sidebar-border-color);
+  flex-shrink: 0;
+}
+
+.sidebar-brand-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 14px;
+}
+
 .sidebar-hamburger {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 34px;
@@ -232,13 +249,12 @@
     overflow: visible;
   }
 
-  .sidebar-brand-text {
+  .sidebar-brand-content {
     display: none;
   }
 
-  .sidebar-brand {
-    justify-content: center;
-    padding: 0 8px;
+  .sidebar-hamburger-wrapper {
+    border-right: none;
   }
 
   /* Submenu appears as flyout on hover */
@@ -264,6 +280,31 @@
     pointer-events: auto;
     transform: translateX(0);
   }
+
+  /* When toggled open on tablet, act as an overlay drawer */
+  .app-sidebar--mobile-open {
+    width: var(--sidebar-total-width);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+  }
+
+  .app-sidebar--mobile-open .sidebar-brand-content {
+    display: flex;
+  }
+
+  .app-sidebar--mobile-open .submenu-panel {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: none;
+    border-right: none;
+    transition: none;
+  }
+
+  .sidebar-mobile-overlay {
+    display: block;
+  }
 }
 
 /* Mobile: sidebar slides in from the left */
@@ -283,21 +324,14 @@
     box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
   }
 
-  .sidebar-hamburger {
+  .sidebar-brand-content {
     display: flex;
   }
 
-  .sidebar-brand-text {
-    display: inline;
-  }
-
-  .sidebar-brand {
-    justify-content: flex-start;
-    padding: 0 14px;
-  }
-
-  .sidebar-mobile-overlay {
-    display: block;
+  .sidebar-hamburger-wrapper {
+    border-right: none;
+    width: auto;
+    padding-left: 14px;
   }
 
   /* Reset submenu panel to normal flow on mobile (within the drawer) */
@@ -309,5 +343,35 @@
     box-shadow: none;
     border-right: none;
     transition: none;
+  }
+}
+
+/* ============================================
+   Desktop Collapsed State
+   ============================================ */
+@media (min-width: 1025px) {
+  body.sidebar-collapsed .app-sidebar {
+    width: var(--sidebar-icon-strip-width);
+  }
+
+  body.sidebar-collapsed .sidebar-brand-content,
+  body.sidebar-collapsed .submenu-panel {
+    display: none;
+  }
+
+  body.sidebar-collapsed .sidebar-hamburger-wrapper {
+    border-right: none;
+  }
+
+  body.sidebar-collapsed .dashboard-content {
+    margin-left: var(--sidebar-icon-strip-width);
+  }
+
+  .custom-desktop-icon {
+    display: block !important;
+  }
+
+  .custom-mobile-icon {
+    display: none !important;
   }
 }

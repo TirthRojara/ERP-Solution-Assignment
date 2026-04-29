@@ -85,6 +85,8 @@ type SidebarContextType = {
   setActiveSection: (id: string) => void
   mobileOpen: boolean
   setMobileOpen: (open: boolean) => void
+  desktopCollapsed: boolean
+  setDesktopCollapsed: (collapsed: boolean) => void
 }
 
 const SidebarContext = React.createContext<SidebarContextType | null>(null)
@@ -98,6 +100,7 @@ export function useSidebarContext() {
 export function AppSidebarProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [desktopCollapsed, setDesktopCollapsed] = React.useState(false)
 
   // Determine active section from pathname
   const getActiveSectionFromPath = React.useCallback((path: string) => {
@@ -140,9 +143,21 @@ export function AppSidebarProvider({ children }: { children: React.ReactNode }) 
     }
   }, [mobileOpen])
 
+  // Toggle body class for desktop collapsed state
+  React.useEffect(() => {
+    if (desktopCollapsed) {
+      document.body.classList.add("sidebar-collapsed")
+    } else {
+      document.body.classList.remove("sidebar-collapsed")
+    }
+    return () => {
+      document.body.classList.remove("sidebar-collapsed")
+    }
+  }, [desktopCollapsed])
+
   const value = React.useMemo(
-    () => ({ activeSection, setActiveSection, mobileOpen, setMobileOpen }),
-    [activeSection, mobileOpen]
+    () => ({ activeSection, setActiveSection, mobileOpen, setMobileOpen, desktopCollapsed, setDesktopCollapsed }),
+    [activeSection, mobileOpen, desktopCollapsed]
   )
 
   return <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
@@ -213,21 +228,34 @@ function SubmenuPanel() {
 
 // Brand header
 function SidebarBrand() {
-  const { mobileOpen, setMobileOpen } = useSidebarContext()
+  const { mobileOpen, setMobileOpen, desktopCollapsed, setDesktopCollapsed } = useSidebarContext()
 
   return (
     <div className="sidebar-brand">
-      <button
-        className="sidebar-hamburger"
-        onClick={() => setMobileOpen(!mobileOpen)}
-        aria-label="Toggle menu"
-      >
-        {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-      </button>
-      <div className="sidebar-brand-logo">
-        <Image src="/logo.svg" alt="Sterling Cloud" width={32} height={28} />
+      <div className="sidebar-hamburger-wrapper">
+        <button
+          className="sidebar-hamburger"
+          onClick={() => {
+            if (window.innerWidth <= 1024) {
+              setMobileOpen(!mobileOpen)
+            } else {
+              setDesktopCollapsed(!desktopCollapsed)
+            }
+          }}
+          aria-label="Toggle menu"
+        >
+          <Menu size={22} className="hidden custom-desktop-icon" />
+          <div className="custom-mobile-icon flex items-center justify-center">
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </div>
+        </button>
       </div>
-      <span className="sidebar-brand-text">Sterling Cloud</span>
+      <div className="sidebar-brand-content">
+        <div className="sidebar-brand-logo">
+          <Image src="/logo.svg" alt="Sterling Cloud" width={32} height={28} />
+        </div>
+        <span className="sidebar-brand-text">Sterling Cloud</span>
+      </div>
     </div>
   )
 }
