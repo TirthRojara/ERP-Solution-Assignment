@@ -49,13 +49,13 @@ export default function VendorPage() {
             {
                 key: "total-vendors",
                 label: "Total Vendors",
-                value: 5,
+                value: 6,
                 icon: Users,
             },
             {
                 key: "active-vendors",
                 label: "Active Vendors",
-                value: 5,
+                value: 6,
                 icon: Check,
             },
             {
