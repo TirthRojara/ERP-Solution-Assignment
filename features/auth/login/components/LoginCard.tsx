@@ -10,7 +10,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Mail, LockKeyhole, Eye } from "lucide-react";
+import { Mail, LockKeyhole, Eye, EyeOff } from "lucide-react";
 import {
     defaultLoginFormValue,
     LoginFormPayload,
@@ -23,10 +23,12 @@ import { CustomCheckbox } from "@/components/form/custom-checkbox";
 import SocialButton from "./LoginButtons";
 import { useLogin } from "../api/hooks";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function LoginCard() {
     const { mutate, isPending } = useLogin();
     const router = useRouter()
+    const [showPassword, setShowPassword] = useState(false);
 
     const form = useForm<LoginFormPayload>({
         defaultValues: defaultLoginFormValue,
@@ -96,13 +98,13 @@ export default function LoginCard() {
                                     <CustomInput
                                         {...field}
                                         id="pwd"
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         variant="outlined"
                                         placeholder="Enter Password"
                                         leftIcon={{ icon: <LockKeyhole /> }}
                                         rightIcon={{
-                                            icon: <Eye />,
-                                            onClick: () => { },
+                                            icon: showPassword ? <EyeOff /> : <Eye />,
+                                            onClick: () => setShowPassword((prev) => !prev),
                                         }}
                                         errorMessage={fieldState.error?.message}
                                     />
@@ -120,7 +122,7 @@ export default function LoginCard() {
                             </p>
                         </div>
 
-                        <Button type="submit">Sign In</Button>
+                        <Button type="submit" disabled={isPending}>{isPending ? "Signing In..." : "Sign In"}</Button>
 
                         <div className="flex items-center gap-4">
                             <Separator className="flex-1 bg-gray/30 border-t h-px" />
