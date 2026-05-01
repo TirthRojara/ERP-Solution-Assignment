@@ -72,12 +72,13 @@ ERP-Solution-Assignment/
 ├── components/                   # Shared / reusable components
 │   ├── ui/                       # shadcn/ui primitives (Button, Card, etc.)
 │   ├── form/                     # Custom form components (Input, Label, Checkbox)
-│   ├── vendor/                   # Vendor-specific UI (table, cards, columns)
 │   ├── app-sidebar.tsx           # Collapsible sidebar component
 │   └── topbar.tsx                # Top navigation bar
 ├── features/                     # Feature-based modules
 │   ├── auth/login/               # Login feature (api, hooks, components)
-│   ├── vendor/                   # Vendor feature (api, hooks, types, components)
+│   ├── vendor/                   # Vendor feature module
+│   │   ├── api/                  # API calls, hooks, and types
+│   │   └── components/           # Vendor UI (page, table, cards, columns, forms)
 │   └── coming-soon/              # Coming-soon feature components
 ├── lib/                          # Utility libraries
 │   └── axios/client.ts           # Axios instance + interceptors

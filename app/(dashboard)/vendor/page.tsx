@@ -1,4 +1,4 @@
-import VendorPage from "@/components/vendor/vendor-page";
+import VendorPage from "@/features/vendor/components/vendor-page";
 
 export default function Page() {
   return (

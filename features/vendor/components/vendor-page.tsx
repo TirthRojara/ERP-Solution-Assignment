@@ -9,9 +9,9 @@ import { useDebounce } from "@/hooks/use-debounce"
 import { useVendorList } from "@/features/vendor/api/hooks"
 import type { VendorListItem } from "@/features/vendor/api/types"
 
-import { VendorSummaryCards } from "@/components/vendor/vendor-summary-cards"
-import { VendorRecordTable } from "@/components/vendor/vendor-record-table"
-import { VendorTableHeader } from "@/components/vendor/vendor-table-header"
+import { VendorSummaryCards } from "@/features/vendor/components/vendor-summary-cards"
+import { VendorRecordTable } from "@/features/vendor/components/vendor-record-table"
+import { VendorTableHeader } from "@/features/vendor/components/vendor-table-header"
 import { NewSupplierDialog } from "@/features/vendor/components/form/new-supplier-dialog"
 import { EditSupplierDialog } from "@/features/vendor/components/form/edit-supplier-dialog"
 
@@ -73,7 +73,7 @@ export default function VendorPage() {
         ]
     }, [])
 
-    
+
     return (
         <div className="px-6 py-6 space-y-8">
             <div className="space-y-1">

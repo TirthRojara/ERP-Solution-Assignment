@@ -15,7 +15,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { cn } from "@/lib/utils"
 import type { VendorListItem } from "@/features/vendor/api/types"
 
-import { buildVendorColumns, createVendorEditColumn } from "@/components/vendor/vendor-columns"
+import { buildVendorColumns, createVendorEditColumn } from "@/features/vendor/components/vendor-columns"
 
 interface VendorRecordTableProps {
   rows: VendorListItem[],
