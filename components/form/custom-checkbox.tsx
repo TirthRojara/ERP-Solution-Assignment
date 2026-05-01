@@ -24,6 +24,8 @@ export interface CustomCheckboxProps extends React.ComponentProps<
     labelTextColor?: string;
     /** Unique id used to link the label to the checkbox */
     id?: string;
+    /** Error message to display below the input */
+    errorMessage?: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -36,6 +38,7 @@ function CustomCheckbox({
     labelTextColor,
     id,
     className,
+    errorMessage,
     ...props
 }: CustomCheckboxProps) {
     // Generate a stable id if none is provided
@@ -50,22 +53,34 @@ function CustomCheckbox({
 
     // Variant: default — checkbox only
     if (variant === "default" || !label) {
-        return <Checkbox id={checkboxId} className={className} {...props} />;
+        return (
+            <div className="flex flex-col gap-1">
+                <Checkbox id={checkboxId} className={className} {...props} />
+                {errorMessage && (
+                    <span className="text-[13px] text-destructive">{errorMessage}</span>
+                )}
+            </div>
+        );
     }
 
     // Variants: withLabel / withLabelMuted — checkbox + label
     return (
-        <div className="flex items-center gap-2">
-            <Checkbox id={checkboxId} className={className} {...props} />
-            <Label
-                htmlFor={checkboxId}
-                className={cn(
-                    "cursor-pointer text-sm font-normal leading-none",
-                    resolvedLabelColor,
-                )}
-            >
-                {label}
-            </Label>
+        <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+                <Checkbox id={checkboxId} className={className} {...props} />
+                <Label
+                    htmlFor={checkboxId}
+                    className={cn(
+                        "cursor-pointer text-sm font-normal leading-none",
+                        resolvedLabelColor,
+                    )}
+                >
+                    {label}
+                </Label>
+            </div>
+            {errorMessage && (
+                <span className="text-[13px] text-destructive">{errorMessage}</span>
+            )}
         </div>
     );
 }

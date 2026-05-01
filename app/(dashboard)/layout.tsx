@@ -1,6 +1,15 @@
 import { AppSidebar, AppSidebarProvider } from "@/components/app-sidebar"
 import { Topbar } from "@/components/topbar"
+import type { Metadata } from "next";
 import React from "react"
+
+export const metadata: Metadata = {
+    title: "Vendor Management",
+    description: "Vendor Management",
+    icons: {
+        icon: "/logo.svg",
+    },
+};
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
